@@ -2,6 +2,8 @@ package convert
 
 import (
 	"errors"
+
+	"github.com/IvanDrf/units/internal/models"
 )
 
 const (
@@ -15,6 +17,37 @@ const (
 	yard = "yd"
 	mile = "mi"
 )
+
+func ConvertLength(req *models.Request) (float64, error) {
+	switch req.Units {
+	case millimeter:
+		return FromMillimeters(req.Value, req.NewUnits)
+
+	case centimetre:
+		return FromCentimetre(req.Value, req.NewUnits)
+
+	case meter:
+		return FromMeters(req.Value, req.NewUnits)
+
+	case kilometer:
+		return FromKilometers(req.Value, req.NewUnits)
+
+	case inch:
+		return FromInches(req.Value, req.NewUnits)
+
+	case feet:
+		return FromFeets(req.Value, req.NewUnits)
+
+	case yard:
+		return FromYards(req.Value, req.NewUnits)
+
+	case mile:
+		return FromMiles(req.Value, req.NewUnits)
+
+	default:
+		return -1, errors.New("invalid units for length converting")
+	}
+}
 
 func FromMeters(value float64, units string) (float64, error) {
 	switch units {

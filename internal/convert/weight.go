@@ -2,6 +2,8 @@ package convert
 
 import (
 	"errors"
+  
+	"github.com/IvanDrf/units/internal/models"
 )
 
 const (
@@ -12,6 +14,31 @@ const (
 	pound = "lb"
 	ounce = "oz"
 )
+
+
+func ConvertWeight(req *models.Request) (float64, error) {
+	switch req.Units {
+	case milligram:
+		return FromMilligram(req.Value, req.NewUnits)
+
+	case gram:
+		return FromGram(req.Value, req.NewUnits)
+
+	case kilogram:
+		return FromKilogram(req.Value, req.NewUnits)
+
+	case pound:
+		return FromPound(req.Value, req.NewUnits)
+
+	case ounce:
+		return FromOunce(req.Value, req.NewUnits)
+
+	default:
+		return -1, errors.New("invalid units for weight converting")
+
+	}
+
+}
 
 func FromGram(value float64, units string) (float64, error) {
 	switch units {

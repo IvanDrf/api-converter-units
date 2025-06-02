@@ -2,6 +2,8 @@ package convert
 
 import (
 	"errors"
+  
+	"github.com/IvanDrf/units/internal/models"
 )
 
 const (
@@ -9,6 +11,22 @@ const (
 	fahrenheit = "F"
 	kelvin     = "K"
 )
+
+func ConvertTemperature(req *models.Request) (float64, error) {
+	switch req.Units {
+	case celsius:
+		return FromCelsius(req.Value, req.NewUnits)
+
+	case fahrenheit:
+		return FromFahrenheit(req.Value, req.NewUnits)
+
+	case kelvin:
+		return FromKelvin(req.Value, req.NewUnits)
+
+	default:
+		return -1, errors.New("invalid units for temperature converting")
+	}
+}
 
 func FromCelsius(value float64, units string) (float64, error) {
 	switch units {
