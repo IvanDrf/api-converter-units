@@ -22,7 +22,7 @@ func FromCelsius(value float64, units string) (float64, error) {
 		return value + 273.15, nil
 
 	default:
-		return -1, errors.New("invalid units for converting from meters")
+		return -1, errors.New("invalid units for converting from temperature")
 	}
 }
 
