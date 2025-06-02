@@ -49,11 +49,15 @@ func FromMeters(value float64, units string) (float64, error) {
 }
 
 func FromMillimeters(value float64, units string) (float64, error) {
-	return FromMeters(value*100, units)
+	return FromMeters(value/100, units)
+}
+
+func FromCentimetre(value float64, units string) (float64, error) {
+	return FromMeters(value/100, units)
 }
 
 func FromKilometers(value float64, units string) (float64, error) {
-	return FromMeters(value/1000, units)
+	return FromMeters(value*1000, units)
 }
 
 func FromInches(value float64, units string) (float64, error) {
