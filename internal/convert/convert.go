@@ -10,6 +10,7 @@ const (
 	length      = "length"
 	temperature = "temperature"
 	weight      = "weight"
+	time        = "time"
 )
 
 func Convert(req *models.Request) (float64, error) {
@@ -22,6 +23,9 @@ func Convert(req *models.Request) (float64, error) {
 
 	case weight:
 		return ConvertWeight(req)
+
+	case time:
+		return ConvertTime(req)
 
 	default:
 		return -1, errors.New("invalid units for converting")

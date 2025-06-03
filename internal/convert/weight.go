@@ -57,7 +57,7 @@ func FromGram(value float64, units string) (float64, error) {
 		return value / 28.34949, nil
 
 	default:
-		return -1, errors.New("invalid units for converting from weight")
+		return -1, errors.New("invalid units for weight converting")
 
 	}
 }
