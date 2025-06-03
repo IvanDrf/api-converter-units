@@ -19,8 +19,9 @@ func PostHandler(ctx echo.Context) error {
 		UnitsType: req.UnitsType,
 		Units:     req.Units,
 		Value:     req.Value,
-		NewUnits:  req.NewUnits,
-		NewValue:  -1,
+
+		NewUnits: req.NewUnits,
+		NewValue: -1,
 	}
 
 	var err error

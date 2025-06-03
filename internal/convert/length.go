@@ -24,7 +24,7 @@ func ConvertLength(req *models.Request) (float64, error) {
 		return FromMillimeters(req.Value, req.NewUnits)
 
 	case centimetre:
-		return FromCentimetre(req.Value, req.NewUnits)
+		return FromCentimeters(req.Value, req.NewUnits)
 
 	case meter:
 		return FromMeters(req.Value, req.NewUnits)
@@ -76,7 +76,7 @@ func FromMeters(value float64, units string) (float64, error) {
 		return value / 1609.344, nil
 
 	default:
-		return -1, errors.New("invalid units for converting from meters")
+		return -1, errors.New("invalid units for length converting")
 
 	}
 }
@@ -85,7 +85,7 @@ func FromMillimeters(value float64, units string) (float64, error) {
 	return FromMeters(value/100, units)
 }
 
-func FromCentimetre(value float64, units string) (float64, error) {
+func FromCentimeters(value float64, units string) (float64, error) {
 	return FromMeters(value/100, units)
 }
 
