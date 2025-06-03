@@ -2,7 +2,7 @@ package convert
 
 import (
 	"errors"
-
+  
 	"github.com/IvanDrf/units/internal/models"
 )
 
@@ -14,6 +14,7 @@ const (
 	pound = "lb"
 	ounce = "oz"
 )
+
 
 func ConvertWeight(req *models.Request) (float64, error) {
 	switch req.Units {
