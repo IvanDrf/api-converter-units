@@ -13,6 +13,7 @@ func main() {
 
 	server.POST("/", handlers.PostHandler)
 	server.GET("/", handlers.GetHandler)
+	server.PATCH("/conversions/:id", handlers.PatchHandler)
 
 	database.InitDB()
 
