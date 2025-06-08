@@ -83,3 +83,16 @@ func PatchHandler(ctx echo.Context) error {
 
 	return ctx.JSON(http.StatusOK, oldConversion)
 }
+
+func DeleteHandler(ctx echo.Context) error {
+	id, err := strconv.Atoi(ctx.Param("id"))
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, map[string]string{"error": "id is not a number"})
+	}
+
+	if err := database.Database.Delete(&models.Responce{}, id).Error; err != nil {
+		return ctx.JSON(http.StatusBadRequest, map[string]string{"error": "could not delete conversion"})
+	}
+
+	return ctx.NoContent(http.StatusNoContent)
+}

@@ -10,12 +10,12 @@ import (
 
 func main() {
 	server := echo.New()
+	database.InitDB()
 
 	server.POST("/", handlers.PostHandler)
 	server.GET("/", handlers.GetHandler)
 	server.PATCH("/conversions/:id", handlers.PatchHandler)
-
-	database.InitDB()
+	server.DELETE("/conversions/:id", handlers.DeleteHandler)
 
 	if err := server.Start(":8080"); err != nil {
 		log.Fatal(err)
