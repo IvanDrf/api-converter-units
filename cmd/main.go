@@ -12,6 +12,7 @@ func main() {
 	server := echo.New()
 
 	server.POST("/", handlers.PostHandler)
+	server.GET("/", handlers.GetHandler)
 
 	database.InitDB()
 
