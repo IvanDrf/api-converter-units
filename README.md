@@ -13,7 +13,7 @@
 
 - PATCH
   ```shell
-  curl -X PATCH -H "Content-Type: application/json" -d '{"type":"length", "units":"m", "value":1000, "converted_units":"km"}' "http://localhost:8080/conversions/1"
+  curl -X PATCH -H "Content-Type: application/json" -d '{"type":"_type_", "units":"_units_", "value":_value_, "converted_units":"_new_"}' "http://localhost:8080/conversions/_id_"
   ```
 
 - DELETE
