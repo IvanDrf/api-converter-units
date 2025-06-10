@@ -33,3 +33,22 @@ func Convert(req *models.Request) (float64, error) {
 	}
 
 }
+
+func CreateConversion(req *models.Request) (models.Responce, error) {
+	result := models.Responce{
+		UnitsType: req.UnitsType,
+		Units:     req.Units,
+		Value:     req.Value,
+
+		NewUnits: req.NewUnits,
+		NewValue: -1,
+	}
+
+	var err error
+	result.NewValue, err = Convert(req)
+	if err != nil {
+		return models.Responce{}, err
+	}
+
+	return result, err
+}

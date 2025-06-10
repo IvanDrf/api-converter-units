@@ -1,23 +1,29 @@
 package main
 
 import (
-	"log"
+	"sync"
 
 	"github.com/IvanDrf/units/internal/database"
 	"github.com/IvanDrf/units/internal/handlers"
-	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	server := echo.New()
-	database.InitDB()
+	server := new(handlers.Server)
+	wg := new(sync.WaitGroup)
 
-	server.POST("/", handlers.PostHandler)
-	server.GET("/", handlers.GetHandler)
-	server.PATCH("/conversions/:id", handlers.PatchHandler)
-	server.DELETE("/conversions/:id", handlers.DeleteHandler)
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		server = handlers.InitServer()
+	}()
 
-	if err := server.Start(":8080"); err != nil {
-		log.Fatal(err)
-	}
+	go func() {
+		defer wg.Done()
+		database.InitDB()
+	}()
+
+	wg.Wait()
+
+	server.RegisterRoutes()
+	server.Start()
 }
