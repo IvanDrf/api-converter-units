@@ -1,9 +1,6 @@
 package handlers
 
 import (
-	"log/slog"
-	"os"
-
 	"github.com/IvanDrf/units/internal/database"
 	"github.com/IvanDrf/units/internal/logger"
 	"github.com/IvanDrf/units/internal/service"
@@ -12,15 +9,14 @@ import (
 
 type Server struct {
 	Server *echo.Echo
-	Logger *slog.Logger
+	Logger logger.Logger
 
 	Service service.ConvertService
 }
 
 func (s *Server) Start() {
 	if err := s.Server.Start(":8080"); err != nil {
-		s.Logger.Error(err.Error())
-		os.Exit(1)
+		s.Logger.Fatal(err.Error())
 	}
 }
 
