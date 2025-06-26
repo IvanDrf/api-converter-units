@@ -1,4 +1,4 @@
-# API for conversion  units of measurement
+# REST API for conversion  units of measurement
 
 ## Methods(CRUD)
 - POST
