@@ -3,7 +3,7 @@
 ## Methods(CRUD)
 - POST
   ```shell
-  curl -X POST -H "Content-Type: application/json" -d '{"type":"_type_", "units":"_units_", "value":_value_, "converted_units":"_new_"}' http://localhost:8080 
+  curl -X POST -H "Content-Type: application/json" -d '{"type":"_type_", "units":"_units_", "value":_value_, "converted_units":"_new_"}' http://localhost:8080/api 
   ```
   - Request
     ```json
@@ -32,7 +32,7 @@
   
 - GET
   ```shell
-  curl -X GET http://localhost:8080
+  curl -X GET http://localhost:8080/api
   ```
 
   - Response
@@ -67,7 +67,7 @@
 
 - PATCH
   ```shell
-  curl -X PATCH -H "Content-Type: application/json" -d '{"type":"_type_", "units":"_units_", "value":_value_, "converted_units":"_new_"}' "http://localhost:8080/conversions/_id_"
+  curl -X PATCH -H "Content-Type: application/json" -d '{"type":"_type_", "units":"_units_", "value":_value_, "converted_units":"_new_"}' "http://localhost:8080/api/conversions/_id_"
   ```
 
   - Request
@@ -93,7 +93,7 @@
     
 - DELETE
   ```shell
-  curl -X DELETE http://localhost:8080/conversions/_id_
+  curl -X DELETE http://localhost:8080/api/conversions/_id_
   ```
 ***
 
